@@ -64,12 +64,34 @@ def replay_command(missing):
 def check_replay(record, directory, missing):
     require(record['receipt_sha256'] == tasks.digest(directory / 'receipt.json'),
             'Kernel replay belongs to a different receipt')
-    require(record['command'] == replay_command(missing) and type(record['exit_code']) is int
-            and record['exit_code'] == 0, 'Invalid kernel replay command or exit code')
-    require(isinstance(record['transcript'], str), 'Invalid kernel replay transcript')
-    lines = set(record['transcript'].splitlines())
-    for row in missing:
-        require('replaying ' + row['module'] in lines, 'Missing kernel replay line: ' + row['module'])
+    if 'replays' in record:
+        require(not any(k in record for k in ('command', 'exit_code', 'transcript')),
+                'Ambiguous kernel replay record')
+        runs = record['replays']
+        require(isinstance(runs, list) and 0 < len(runs) <= len(missing),
+                'Invalid kernel replay batches')
+    else:
+        runs = [record]
+    expected = [r['module'] for r in missing]
+    covered = []
+    prefix = replay_command([])
+    for run in runs:
+        require(isinstance(run, dict), 'Invalid kernel replay batch')
+        command = run.get('command')
+        require(isinstance(command, list) and command[:len(prefix)] == prefix
+                and len(command) > len(prefix) and all(isinstance(n, str) for n in command),
+                'Invalid kernel replay command')
+        names = command[len(prefix):]
+        require(type(run.get('exit_code')) is int and run['exit_code'] == 0,
+                'Invalid kernel replay exit code')
+        require(isinstance(run.get('transcript'), str), 'Invalid kernel replay transcript')
+        lines = set(run['transcript'].splitlines())
+        for name in names:
+            require('replaying ' + name in lines, 'Missing kernel replay line: ' + name)
+        covered.extend(names)
+    # Contiguous batches retain the requested order. This also rejects omitted,
+    # duplicated, extra, or substituted modules, even if other logs name them.
+    require(covered == expected, 'Kernel replay target coverage mismatch')
 
 
 def verify(directory, targets, project_rows, checkout=None):

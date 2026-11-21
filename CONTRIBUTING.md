@@ -134,6 +134,8 @@ python3 tracker/replay_evidence.py verify M000001 path/to/receipt
 
 When a requested module already exists in the worker cache and has no build line, the builder runs the pinned Lean kernel checker against its imported environment. It checks the installed object against the receipt before and after replay. The submission links `kernel-replay.json` alongside the receipt, bundle and Lake log. The record includes the exact command, per-module transcript, successful exit status and the SHA-256 of the receipt. Download it with the other assets for offline verification.
 
+Cached-target replay uses one checker process by default. To use spare CPUs, set `REPLAY_KERNEL_JOBS` to a positive integer in the builder environment, for example by adding `-e REPLAY_KERNEL_JOBS=4` when creating the builder container. This splits the requested cached targets into contiguous batches and runs at most that many pinned checker processes, with one Lean thread each. Each process loads an imported environment, so choose the count to fit the builder's memory and concurrent source builds. Parallel records list each actual command, exit status and transcript in `replays`; use an updated tracker to verify them. Single-process records keep the existing format. These are module-level checks against imported environments; the final fresh replay of `Main` remains separate.
+
 For a transfer, capture the primary's inventory before installing reviewed, platform-compatible artifacts using the coordinator's existing procedure. On the primary, run the following inside its prepared environment.
 
 ```bash

@@ -1,7 +1,9 @@
 """Run inside the isolated Linux builder, including after a controller restart."""
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 import fcntl
 import json
+import re
 import subprocess
 from pathlib import Path
 import uuid
@@ -20,13 +22,33 @@ def record_cached_replay(project, out, missing, receipt, launcher, env):
             evidence.require(tasks.digest(path) == expected, 'Cached object changed: ' + str(path))
 
     check_objects()
-    cmd = evidence.replay_command(missing)
-    result = subprocess.run([*launcher, *cmd], env=dict(env, LEAN_NUM_THREADS='1'), cwd=project,
-                            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
-    evidence.require(result.returncode == 0, f'Kernel replay failed ({result.returncode}): {result.stdout}')
+    requested = env.get('REPLAY_KERNEL_JOBS', '1')
+    evidence.require(isinstance(requested, str) and re.fullmatch(r'[1-9][0-9]*', requested),
+                     'REPLAY_KERNEL_JOBS must be a positive integer')
+    jobs = min(int(requested), len(missing))
+    width = (len(missing) + jobs - 1) // jobs
+    groups = [missing[i:i + width] for i in range(0, len(missing), width)]
+
+    def replay(group):
+        cmd = evidence.replay_command(group)
+        result = subprocess.run([*launcher, *cmd], env=dict(env, LEAN_NUM_THREADS='1'), cwd=project,
+                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+        return dict(command=cmd, exit_code=result.returncode, transcript=result.stdout)
+
+    if jobs == 1:
+        runs = [replay(missing)]
+    else:
+        with ThreadPoolExecutor(max_workers=jobs) as pool:
+            runs = list(pool.map(replay, groups))
+    for run in runs:
+        evidence.require(run['exit_code'] == 0,
+                         f"Kernel replay failed ({run['exit_code']}) for {run['command']}: {run['transcript']}")
     check_objects()
-    record = dict(command=cmd, exit_code=result.returncode, transcript=result.stdout,
-                  receipt_sha256=tasks.digest(out / 'receipt.json'))
+    record = dict(receipt_sha256=tasks.digest(out / 'receipt.json'))
+    if jobs == 1:
+        record.update(runs[0])
+    else:
+        record['replays'] = runs
     evidence.check_replay(record, out, missing)
     path = out / evidence.REPLAY_FILE
     tmp = path.with_suffix('.tmp')

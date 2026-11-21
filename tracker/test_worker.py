@@ -348,6 +348,15 @@ class WorkerTests(unittest.TestCase):
         self.assertIn('Lake built 0 and the kernel replayed 1 from cache', comment)
         self.assertFalse((self.root / '2' / evidence.REPLAY_FILE).exists())
         self.assertEqual(len(evidence.inventory(self.project, self.rows)['modules']), 20)
+        # Reuse the whole packet, exercising actual independent checker
+        # processes and the portable, per-command parallel receipt format.
+        packet = self.root / 'parallel-packet'
+        with patch.dict(os.environ, {'REPLAY_KERNEL_JOBS': '4'}):
+            self.assertEqual(worker_build.build('P0001', self.project, packet), 0)
+        parallel = json.loads((packet / evidence.REPLAY_FILE).read_text())
+        self.assertEqual(len(parallel['replays']), 4)
+        result = evidence.verify(packet, self.rows, {r['module']: r for r in self.rows}, self.project)
+        self.assertEqual(result['kernel_replayed_targets'], [r['module'] for r in self.rows])
         argv = ['replay_evidence.py', 'reuse-check', 'M000001', str(self.root / '1'), '--checkout', str(self.project)]
         output = io.StringIO()
         with patch.object(sys, 'argv', argv), contextlib.redirect_stdout(output):
