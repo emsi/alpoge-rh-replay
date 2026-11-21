@@ -12,6 +12,8 @@ This addresses point 2 of [#85](https://github.com/rohanarun/alpoge-rh-replay/is
 | `CompareMain.lean` | the three above and `Main` | Checks the five theorems of `Main`. Optional step in `verify.sh`. |
 | `CompareStatements.lean` | the three above and `Statements` | Checks the four definitions in `Statements` and Mathlib's `RiemannHypothesis`. Needs only `lake build Statements`. |
 | `statement-check.sh` | | Compiles the first two modules into an output directory and runs one comparison. |
+| `IndependentAudit.lean` | `Lean` | Loads expected statements and Main as data with imported extensions disabled, compares types in the kernel, and walks private proof bodies for axioms. |
+| `independent-check.sh` | | Compiles the expected statements without Main and runs the additional data audit. |
 
 ## What a comparison checks
 
@@ -75,3 +77,41 @@ any statement is `[NeZero N]`.
 
 The `main` mode has **not** been run against a genuine `Main.olean` yet. Once it passes there, it
 could be considered for the default `verify.sh` path.
+
+## Audit without project frontend extensions
+
+An imported command elaborator can override `run_cmd` and suppress a frontend axiom guard.
+`tests/independent-audit-native.py` demonstrates this with a temporary module containing a forbidden
+axiom. The same fixture is rejected by `IndependentAudit.lean`. This is a test of the audit mechanism,
+not evidence that the RH archive contains such an override.
+
+The additional auditor is compiled with `Lean` alone. Its runtime uses `withImportModules`, which
+sets `loadExts := false`, to read the expected statements and Main. It does not execute their
+imported initializers or install their elaborator extensions. For each of the five named targets,
+it requires a theorem declaration and uses `Lean.Kernel.isDefEq` to compare its type with the
+Mathlib-only expected proposition. It then walks the private kernel declarations' types and values,
+including opaque bodies and inductive constructors, without consulting exported axiom summaries.
+Missing dependencies fail the check. Only `propext`, `Classical.choice`, and `Quot.sound` are allowed.
+
+Run this after building Main, with the pinned compiler on `PATH` and the prepared, integrity-checked
+`LEAN_PATH` already set. Capture that path during dependency preparation; no project lakefile needs
+to be evaluated again for this command:
+
+```bash
+bash /path/to/alpoge-rh-replay/audit/independent-check.sh /path/to/empty/audit-output
+```
+
+Exit status 0 and `INDEPENDENT_AUDIT_PASSED 5 targets` mean all five types and the raw axiom walk
+passed. The output directory contains compiler, expected-statement, and audit logs, plus source and
+expected-object checksums. The script refuses to overwrite an existing evidence directory.
+
+This uses the same pinned Lean kernel implementation. It is an additional audit, not a replacement
+for the source build or `leanchecker --fresh Main`; compiler, dependency-cache, and import-path
+integrity still need separate checks. Unlike the existing comparison, it requires kernel
+definitional equality without also requiring syntactic α-equivalence after unfolding.
+
+Native tests cover a genuine theorem, a permitted axiom, wrong and missing targets, a forbidden
+axiom hidden behind an imported elaborator, private and opaque dependencies, an axiom substituted
+for a theorem, and initializer suppression with a frontend positive control. The prototype also
+passed on the Mathlib-only theorem `RHExpected.zeta_strip_of_dirichletZeros`, traversing 52,933
+declarations and finding exactly the three allowed axioms. It has **not** yet run on genuine Main.

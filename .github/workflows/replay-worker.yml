@@ -1,9 +1,9 @@
 name: Native replay worker
 on:
   pull_request:
-    paths: ['tracker/*.py', 'tracker/summary.json', '.github/workflows/replay-worker.yml']
+    paths: ['tracker/*.py', 'tracker/summary.json', 'audit/IndependentAudit.lean', 'audit/independent-check.sh', 'tests/independent-audit-native.py', '.github/workflows/replay-worker.yml']
   push:
-    paths: ['tracker/*.py', 'tracker/summary.json', '.github/workflows/replay-worker.yml']
+    paths: ['tracker/*.py', 'tracker/summary.json', 'audit/IndependentAudit.lean', 'audit/independent-check.sh', 'tests/independent-audit-native.py', '.github/workflows/replay-worker.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -31,3 +31,8 @@ jobs:
         run: |
           python3 -m unittest discover -s tracker -p 'test_worker.py' -v
           python3 -m unittest discover -s tracker -p 'test_bundle_preflight.py' -v
+      - name: Check the auditor against imported elaborators and hidden axioms
+        run: |
+          prefix="$(elan run leanprover/lean4:v4.33.1 lean --print-prefix)"
+          python3 tests/independent-audit-native.py "$prefix/bin"
+          bash -n audit/independent-check.sh
