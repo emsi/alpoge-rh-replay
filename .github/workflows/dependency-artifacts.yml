@@ -1,9 +1,9 @@
 name: Dependency artifact integrity
 on:
   pull_request:
-    paths: ['audit/dependency-artifacts.py', 'tests/dependency-artifacts-native.py', 'tests/test_dependency_artifacts.py', 'tests/test-verify-sh.sh', 'verify.sh', '.github/workflows/dependency-artifacts.yml']
+    paths: ['Audit.lean', 'audit/dependency-artifacts.py', 'tests/dependency-artifacts-native.py', 'tests/test_dependency_artifacts.py', 'tests/test-verify-sh.sh', 'verify.sh', '.github/workflows/dependency-artifacts.yml']
   push:
-    paths: ['audit/dependency-artifacts.py', 'tests/dependency-artifacts-native.py', 'tests/test_dependency_artifacts.py', 'tests/test-verify-sh.sh', 'verify.sh', '.github/workflows/dependency-artifacts.yml']
+    paths: ['Audit.lean', 'audit/dependency-artifacts.py', 'tests/dependency-artifacts-native.py', 'tests/test_dependency_artifacts.py', 'tests/test-verify-sh.sh', 'verify.sh', '.github/workflows/dependency-artifacts.yml']
   workflow_dispatch:
 permissions:
   contents: read
