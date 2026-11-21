@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalToGlobal.PairingIndexBounds.SplitPairEquations.SplitPairGen",
+  "source_sha256": "69b057f75138b631fa37f862b2c0c0a2b2514c1208ec41575a38a67fdfc1e530",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

@@ -1,0 +1,13 @@
+--- a/src/Formalism/LocalToGlobal/NormalizedHeckeFactors/CoverAlg.lean
++++ b/src/Formalism/LocalToGlobal/NormalizedHeckeFactors/CoverAlg.lean
+@@ -340,7 +340,9 @@
+   obtain ⟨F, hF, htop⟩ := exists_finset_pts hinj hS hsplit hint
+   by_contra hne
+   push Not at hne
+-  letI : CommRing (Algebra.adjoin O S) := Algebra.adjoinCommRingOfComm O fun a ha b hb => (hS a ha b hb).eq
++  letI : IsMulCommutative (Algebra.adjoin O S) := Algebra.isMulCommutative_adjoin O (fun a ha b hb _ => hS a ha b hb)
++  letI : CommRing (Algebra.adjoin O S) := by
++    open scoped IsMulCommutative in infer_instance
+   set F' := F.filter (fun ψ => W _ (pt ψ) ≠ ⊥) with hF'
+   have ht : ∃ t ∈ 𝔪, ∀ ψ ∈ F', IsUnit (ψ t) := by
+     rcases F'.eq_empty_or_nonempty with h0 | ⟨a, ha⟩

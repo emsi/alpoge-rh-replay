@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalRingCardinality.SpanPowerMembership.UrPkgNonempty",
+  "source_sha256": "742244aff7028b6f465048b6a6cd6971db84e1fced5e85479c872371822cddb4",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

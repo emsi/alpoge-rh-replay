@@ -1,0 +1,11 @@
+--- a/src/Formalism/LocalToGlobal/ProjectiveLattices/IntegrableOnIntegrand.lean
++++ b/src/Formalism/LocalToGlobal/ProjectiveLattices/IntegrableOnIntegrand.lean
+@@ -236,7 +236,7 @@
+ def LatZ (X : Comp → Data E r) (ρ : ℕ) : Prop := ∀ cu : CuF X ρ, ∃ bs, IsZBasis (X cu.1) cu.2 bs
+ 
+ def XcLatF (X : Comp → Data E r) (𝔄 : FractionalIdeal (nonZeroDivisors (𝓞 E)) E) (ρ : ℕ) : Prop :=
+-  ∀ cu : CuF X ρ, Submodule.IsLattice E (XcF X 𝔄 cu)
++  ∀ cu : CuF X ρ, Submodule.IsFullLattice E (XcF X 𝔄 cu)
+ 
+ def CuNeF (X : Comp → Data E r) (ρ : ℕ) : Prop := ∀ c, Nonempty (CuspFD (X c) ρ)
+ 

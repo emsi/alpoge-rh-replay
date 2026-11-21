@@ -1,0 +1,11 @@
+--- a/src/Formalism/LocalToGlobal/GlobalTheory/GL1/CompactFixesLattice/Imports.lean
++++ b/src/Formalism/LocalToGlobal/GlobalTheory/GL1/CompactFixesLattice/Imports.lean
+@@ -53,7 +53,7 @@
+       rw [map_sum]
+       simp [β, map_zsmul]
+     rw [hxe]
+-    simp only [map_sum, map_zsmul, Finsupp.coe_finset_sum, Finset.sum_apply, Finsupp.coe_smul,
++    simp only [map_sum, map_zsmul, Finsupp.coe_finsetSum, Finset.sum_apply, Finsupp.coe_smul,
+       Pi.smul_apply, Finset.mul_sum, mul_smul_comm]
+     exact Subring.sum_mem _ fun j _ => Subring.zsmul_mem _ (key j) _
+ 

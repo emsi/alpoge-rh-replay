@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalToGlobal.GroupLattices.PerfectRings.AlgebraMapFinite",
+  "source_sha256": "837cfba78fba821d09a96ca0dd54cad7f565419ffd10298f08931d6cd3a89e84",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

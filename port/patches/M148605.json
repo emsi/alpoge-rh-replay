@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalToGlobal.GlobalTheory.GL1.CompactFixesLattice.CoordMulTmul",
+  "source_sha256": "40e15435f1b0946f06933bd6ac1f28d724f20694e4adb6b01a0594abdea2d2cb",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

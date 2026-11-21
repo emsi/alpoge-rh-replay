@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalToGlobal.ProjectiveLattices.GenSectB",
+  "source_sha256": "876bd6e35838d624f5c367edb50a3e69d8f34043579fb7d73193eaef40617961",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Proof-only: use polynomial.coeff index and typed coefficient functions in the existing derivative and specialization proofs, and the renamed totalDegree_finsetSum bound. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

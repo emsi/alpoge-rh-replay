@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalToGlobal.CharacterGerms.RowTiePSplitLA",
+  "source_sha256": "840c89609fad0de1abd2d84d5cbb898939fc94de77aaefa6e8aadc1d825b1edc",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Proof-only: explicitly type the same polynomial coefficient function in congrArg. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

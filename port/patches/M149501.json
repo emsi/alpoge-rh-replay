@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalToGlobal.IndefiniteReal.LevelTypeEquivalence.SobSym",
+  "source_sha256": "e87373f5b71e883a6f256d82c6c690a05ba76a86c21637ef53a22d36cb2655c4",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

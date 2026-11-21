@@ -1,0 +1,11 @@
+--- a/src/Formalism/LocalToGlobal/SiegelLatticeTheory/ClosedLocalOrbits/GaugeLatticeShifts/LieAveraging/AvgCore.lean
++++ b/src/Formalism/LocalToGlobal/SiegelLatticeTheory/ClosedLocalOrbits/GaugeLatticeShifts/LieAveraging/AvgCore.lean
+@@ -66,7 +66,7 @@
+     rw [hν, Measure.map_map (measurable_mul_const r) measurable_subtype_coe]
+     have : (fun x => x * r) ∘ (Subtype.val : R → G) = Subtype.val ∘ (fun y : R => y * (⟨r, hr⟩ : R)) := rfl
+     rw [this, ← Measure.map_map measurable_subtype_coe (measurable_mul_const _),
+-      ← Measure.map_smul, ← Measure.isMulLeftInvariant_eq_smul]
++      ← Measure.map_smul (hf := measurable_subtype_coe.aemeasurable), ← Measure.isMulLeftInvariant_eq_smul]
+   have : SMulInvariantMeasure Γ G ν := ⟨fun c A hA => by
+     have := congrArg (fun m : Measure G => m A) (hleft c (hΓR c.2))
+     rw [Measure.map_apply (measurable_const_mul _) hA] at this

@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalToGlobal.IndefiniteReal.NormalDecomposition.Decomp",
+  "source_sha256": "5126bedc46eff7f7ae5377f6aaf63b67be34a85d46540e1d5a042b2987cbf23a",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

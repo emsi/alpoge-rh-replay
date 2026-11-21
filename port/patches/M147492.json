@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalRingCardinality.DataCD",
+  "source_sha256": "d6f18f4e8bf8f728d01e80098cd8d03962c9d61210852fb5d69f63c08eae0ff7",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

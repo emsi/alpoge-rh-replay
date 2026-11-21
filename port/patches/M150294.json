@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalToGlobal.ProjectiveLattices.CrudeMin",
+  "source_sha256": "686adef25da73d2bcae9f7c6f4839a3dcd4fa46245349048e7c7df5d2c9bf0e9",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Equivalent coefficient API adaptation: polynomial.coeff index denotes the same coefficient as the previous namespace-level coefficient function with its arguments in the old order. All indices, rings, polynomial expressions, quantifiers and inequalities are retained.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

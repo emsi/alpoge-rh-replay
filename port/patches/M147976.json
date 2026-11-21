@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalToGlobal.CharacterGerms.WipDworkInvG",
+  "source_sha256": "800ce58f9fa9163d2b85524e62d0737728e0110d29d904cd07b359e1f63441ed",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

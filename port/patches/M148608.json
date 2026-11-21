@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalToGlobal.GlobalTheory.GL1.CompactFixesLattice.Imports",
+  "source_sha256": "fd6c15a4ed4d5917afa75a83f03b20b8d1a8d63139cc0781c4a5c700c80ddf6e",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Proof-only: use the target API Finsupp.coe_finsetSum for the same mathematical operation, with explicit namespace or updated implicit arguments as required. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

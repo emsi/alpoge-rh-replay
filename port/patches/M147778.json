@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalToGlobal.CharacterGerms.DetNeZeroOfChars",
+  "source_sha256": "7a0bc7d5b3184be11d26693d2d02fff80b09b7550246505d58bd1b36a93bf5aa",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

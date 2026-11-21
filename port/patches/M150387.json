@@ -3,6 +3,6 @@
   "source_sha256": "b8e5dcec1adabc17ad00f9601e456eb68efaa08c67e2fc18a08e126fefa6da0b",
   "lean": "leanprover/lean4:v4.36.0",
   "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
-  "notes": "unchanged",
-  "evidence": "port triage port-triage-d1-v3: compiled unchanged on Google Cloud (port/triage/results.json)"
+  "notes": "Preserve the pinned full-lattice meaning of XcLatF: old Submodule.IsLattice required finite generation and full scalar span. The target name IsLattice drops the full-span requirement; IsFullLattice restores it. Over the existing number field and its ring of integers, the target linear-independence condition follows from finite generation via IsLattice.of_fg, so the predicates are equivalent. Quantifiers and lattice submodules are unchanged.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
 }

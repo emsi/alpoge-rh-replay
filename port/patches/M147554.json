@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalRingCardinality.SpanPowerMembership.ExistsDensity",
+  "source_sha256": "068e62e094b68c76e9241628005e3453ce1eb8a0d33501df08ae59fe9822be8f",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

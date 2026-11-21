@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalToGlobal.NormalizedHeckeFactors.CoverAlg",
+  "source_sha256": "064e416aac45940e09a52614234a3548bbc71416733cbe79c35243beeeece41a",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Proof-only: construct the local commutative adjoin-ring instance from the original pairwise-commutativity hypothesis, preserving the existing underlying Ring operations. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

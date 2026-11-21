@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalRingCardinality.SpanPowerMembership.Primes",
+  "source_sha256": "3c887298b2d447c51f35bcfc6dada125d24a9c6671ed8bc3956700cd7dba01ea",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Proof-only: specialize the prime-power divisibility lemma explicitly and rewrite its natural-valuation expression using Nat.padicValNat_def; preserve all exported statements. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

@@ -1,0 +1,13 @@
+--- a/src/Formalism/LocalToGlobal/CharacterGerms/RowTiePSplitLA.lean
++++ b/src/Formalism/LocalToGlobal/CharacterGerms/RowTiePSplitLA.lean
+@@ -135,8 +135,8 @@
+       refine Set.Infinite.mono ?_ (Set.infinite_range_of_injective (Nat.cast_injective (R := K)))
+       rintro _ ⟨t, rfl⟩
+       exact hroot t
+-    have hc1 := congrArg (fun p => Polynomial.coeff p 1) hq0
+-    simp only [hq, finsetSum_coeff, coeff_monomial, Finset.sum_ite_eq', Finset.mem_range, coeff_zero] at hc1
++    have hc1 := congrArg (fun p : Polynomial _ => p.coeff 1) hq0
++    simp only [hq, finsetSum_coeff, coeff_monomial, Finsupp.single_apply, Finset.sum_ite_eq', Finset.mem_range, coeff_zero] at hc1
+     rw [if_pos (by omega)] at hc1
+     exact hc1
+   have hR1 : R.coeff 1 = (X - Polynomial.C (μ c)) * Polynomial.C (∏ c' ∈ Finset.univ.erase c, a c') := by

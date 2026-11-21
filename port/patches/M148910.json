@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LocalToGlobal.GroupLattices.ComparisonMaps.ClsFib",
+  "source_sha256": "b7a72f17599ebfa9772ce3fca3ff7c2d3e5a6ecfb34340db5316dca53fa43b79",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Proof-only: use the target API DoubleCoset.eq for the same mathematical operation, with explicit namespace or updated implicit arguments as required. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}

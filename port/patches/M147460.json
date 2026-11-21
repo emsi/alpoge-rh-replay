@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.LatticeSlopes.LatticeSlopesProofs.GramDetLe",
+  "source_sha256": "99483828a14d7aec28ce3fba4fb47626c13f1240a4cf4e032914ad8faceabaf6",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Proof-only: use the target API PiLp.single_apply for the same mathematical operation, with explicit namespace or updated implicit arguments as required. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0149-lean436-20261121/packet-result.json"
+}
