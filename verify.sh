@@ -105,6 +105,8 @@ verify_integrity() {
     integrity_failed "Audit.lean changed after the archive was verified"
   [[ "$(digest "$record/parts.sha256")" == "$parts_digest" ]] ||
     integrity_failed "parts.sha256 changed after the archive was verified"
+  [[ "$(digest "$record/audit/dependency-artifacts.py")" == "$artifact_checker_digest" ]] ||
+    integrity_failed "dependency-artifacts.py changed after the archive was verified"
   echo REPLAY_INTEGRITY_CHECK_PASSED
 }
 
@@ -163,6 +165,11 @@ verify_pristine_dependencies() {
   echo REPLAY_DEPENDENCIES_PRISTINE_PASSED
 }
 
+verify_dependency_artifacts() {
+  python3 -I "$record/audit/dependency-artifacts.py" verify "$work/dependency-artifacts.json" \
+    --sha256 "$dependency_artifacts_digest"
+}
+
 mkdir "$work/parts"
 cd "$work/parts"
 while read -r hash part; do
@@ -171,6 +178,7 @@ done < "$record/parts.sha256"
 sha256sum -c "$record/parts.sha256"
 audit_digest="$(digest "$record/Audit.lean")"
 parts_digest="$(digest "$record/parts.sha256")"
+artifact_checker_digest="$(digest "$record/audit/dependency-artifacts.py")"
 cat part* | tar -xz --no-same-owner -C "$work"
 cd "$work/lean"
 manifest_digest="$(digest lake-manifest.json)"
@@ -183,9 +191,24 @@ lake_cmd=(elan run "$toolchain" lake)
 "${lake_cmd[@]}" exe cache get
 test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = "0df444a360eaa60ab8c11dca51a86af692955474"
 verify_pristine_dependencies
+# Record the prepared cache before compiling project proof modules. Git's clean
+# check deliberately ignores these files; a fresh kernel accepts valid alternate
+# definitions just as it accepts the intended ones. Keep the snapshot's digest in
+# this parent shell, and freeze the search path used by the final checks.
+verify_integrity
+toolchain_root="$ELAN_HOME/toolchains/leanprover--lean4---v4.33.1"
+toolchain_bin="$toolchain_root/bin"
+prepared_lean_path="$("${lake_cmd[@]}" env printenv LEAN_PATH)"
+verify_integrity
+python3 -I "$record/audit/dependency-artifacts.py" snapshot \
+  --lean-path "$prepared_lean_path" --stdlib "$toolchain_root/lib/lean" \
+  --project-output "$work/lean/.lake/build/lib/lean" "$work/dependency-artifacts.json"
+dependency_artifacts_digest="$(digest "$work/dependency-artifacts.json")"
+readonly prepared_lean_path dependency_artifacts_digest artifact_checker_digest
 if [[ "${2:-}" == "--prepare-only" ]]; then
   verify_integrity
   verify_pristine_dependencies
+  verify_dependency_artifacts
   echo "Prepared project in $work/lean"
   exit 0
 fi
@@ -193,13 +216,22 @@ fi
 echo REPLAY_SOURCE_BUILD_PASSED
 verify_integrity
 verify_pristine_dependencies
-"${lake_cmd[@]}" env lean "$record/Audit.lean"
-echo REPLAY_AXIOM_AUDIT_PASSED
+verify_dependency_artifacts
+# Avoid re-evaluating a project lakefile to choose the final import environment.
+# leanchecker invokes `lean` to find its sysroot, hence the pinned bin path too.
+export LEAN_PATH="$prepared_lean_path" PATH="$toolchain_bin:$PATH"
+"$toolchain_bin/lean" "$record/Audit.lean"
 verify_integrity
-"${lake_cmd[@]}" env leanchecker --fresh Main
+verify_dependency_artifacts
+echo REPLAY_AXIOM_AUDIT_PASSED
+"$toolchain_bin/leanchecker" --fresh Main
+verify_integrity
+verify_dependency_artifacts
 echo REPLAY_FRESH_KERNEL_PASSED
 # Optional: compare Main's statements with Mathlib-only expected propositions (audit/README.md).
 if [[ "${REPLAY_STATEMENT_CHECK:-0}" == 1 ]]; then
-  "${lake_cmd[@]}" env bash "$record/audit/statement-check.sh" main "$work/statement-check"
+  bash "$record/audit/statement-check.sh" main "$work/statement-check"
+  verify_integrity
+  verify_dependency_artifacts
   echo REPLAY_STATEMENT_CHECK_PASSED
 fi

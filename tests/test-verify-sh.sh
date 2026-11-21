@@ -124,8 +124,9 @@ report "a failing git status fails the dependency check instead of reading as cl
 # the first integrity check has run; --prepare-only must notice before
 # it returns.
 e2e="$tmp/e2e"
-mkdir -p "$e2e/record" "$e2e/stubs" "$e2e/tree/lean/.lake/packages/mathlib/.git"
+mkdir -p "$e2e/record/audit" "$e2e/stubs" "$e2e/tree/lean/.lake/packages/mathlib/.git"
 cp "$repo/verify.sh" "$e2e/record/verify.sh"; chmod +x "$e2e/record/verify.sh"
+cp "$repo/audit/dependency-artifacts.py" "$e2e/record/audit/"
 echo "theorem placeholder : True := trivial" > "$e2e/record/Audit.lean"
 printf 'leanprover/lean4:v4.33.1\n' > "$e2e/tree/lean/lean-toolchain"
 cat > "$e2e/tree/lean/lake-manifest.json" <<'EOF'
@@ -153,7 +154,11 @@ cat > "$e2e/stubs/elan" <<EOF
 if [[ "\$1" == "toolchain" ]]; then
   tc="\$ELAN_HOME/toolchains/leanprover--lean4---v4.33.1"
   mkdir -p "\$tc/bin" "\$tc/lib/lean"
-  for f in lean leanchecker lake; do echo stub > "\$tc/bin/\$f"; done
+  for f in lean leanchecker lake; do
+    printf '#!/bin/sh\necho final-check-ran >> "%s"\n' "$e2e/final-checks.log" > "\$tc/bin/\$f"
+    chmod +x "\$tc/bin/\$f"
+  done
+  echo prepared > "\$tc/lib/lean/Init.olean"
   for f in libleanshared.so libLake_shared.so libleanshared_1.so \
            libleanshared_2.so libInit_shared.so; do
     echo stub > "\$tc/lib/lean/\$f"
@@ -162,7 +167,23 @@ if [[ "\$1" == "toolchain" ]]; then
 fi
 for a in "\$@"; do
   if [[ "\$a" == "cache" ]]; then
-    echo "-- tampered after the archive was verified" >> "$e2e/record/Audit.lean"
+    mkdir -p .lake/packages/mathlib/.lake/build/lib/lean .lake/build/lib/lean
+    echo prepared > .lake/packages/mathlib/.lake/build/lib/lean/Canonical.olean
+    if [[ "\${TEST_ATTACK:-audit}" == audit ]]; then
+      echo "-- tampered after the archive was verified" >> "$e2e/record/Audit.lean"
+    fi
+    exit 0
+  elif [[ "\$a" == "printenv" ]]; then
+    printf '%s:%s:%s\n' "\$PWD/.lake/packages/mathlib/.lake/build/lib/lean" \\
+      "\$PWD/.lake/build/lib/lean" "\$ELAN_HOME/toolchains/leanprover--lean4---v4.33.1/lib/lean"
+    exit 0
+  elif [[ "\$a" == "build" ]]; then
+    case "\${TEST_ATTACK:-audit}" in
+      cache) echo alternate > .lake/packages/mathlib/.lake/build/lib/lean/Canonical.olean ;;
+      snapshot) echo '{}' > ../dependency-artifacts.json ;;
+      helper) echo '# rewritten' >> "$e2e/record/audit/dependency-artifacts.py" ;;
+      shadow) echo alternate > .lake/build/lib/lean/Init.olean ;;
+    esac
     exit 0
   fi
 done
@@ -216,6 +237,31 @@ for _ in 1 2 3 4 5 6 7 8 9 10; do # tee may still be flushing replay.log
 done
 [[ "$rc_e2e" != 0 ]] && grep -q "REPLAY_INTEGRITY_CHECK_FAILED" "$e2e/run/replay.log"
 report "--prepare-only reruns the integrity checks before returning" $?
+
+# Full runs with real artifact hashing and stubbed compiler processes. The guard
+# must stop before invoking either final checker, not merely emit an error later.
+for attack in clean cache snapshot helper shadow; do
+  echo "theorem placeholder : True := trivial" > "$e2e/record/Audit.lean"
+  cp "$repo/audit/dependency-artifacts.py" "$e2e/record/audit/"
+  rm -f "$e2e/final-checks.log"
+  # Wait for verify.sh's asynchronous tee to close its output before reading it.
+  TEST_ATTACK="$attack" PATH="$e2e/stubs:$PATH" \
+    "$e2e/record/verify.sh" "$e2e/run-$attack" 2>&1 | cat >"$e2e/$attack.log"
+  rc=${PIPESTATUS[0]}
+  if [[ "$attack" == clean ]]; then
+    [[ "$rc" == 0 && -f "$e2e/final-checks.log" ]] &&
+      grep -q REPLAY_FRESH_KERNEL_PASSED "$e2e/$attack.log"
+    ok=$?
+    [[ "$ok" == 0 ]] || cat "$e2e/$attack.log"
+    report "an unchanged prepared cache reaches both final checks" "$ok"
+  else
+    [[ "$rc" != 0 && ! -e "$e2e/final-checks.log" ]] &&
+      grep -q REPLAY_INTEGRITY_CHECK_FAILED "$e2e/$attack.log"
+    ok=$?
+    [[ "$ok" == 0 ]] || cat "$e2e/$attack.log"
+    report "post-build $attack tampering stops before the final checks" "$ok"
+  fi
+done
 
 echo "== verify.sh smoke tests: $pass passed, $fail failed"
 [[ "$fail" == 0 ]]
