@@ -31,3 +31,7 @@ jobs:
         run: |
           python3 -m unittest discover -s tracker -p 'test_worker.py' -v
           python3 -m unittest discover -s tracker -p 'test_bundle_preflight.py' -v
+      - name: Exercise transitive dependency export and downstream compilation
+        env:
+          REPLAY_NATIVE_TEST: '1'
+        run: python3 -m unittest discover -s tracker -p 'test_dependency_bundle.py' -v

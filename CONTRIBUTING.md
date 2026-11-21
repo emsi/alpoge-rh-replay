@@ -161,6 +161,22 @@ The tool streams gzip tar archives, verifies their compressed SHA-256 digests, a
 
 Exit **0** means no differing artifact members other than `.trace` or `.setup.json`; **1** reports other differing members; **2** means invalid input. Raw `.trace` and generated `.setup.json` input differences appear separately as informational `trace_differences` and `setup_differences`, since path and log metadata can differ without preventing reuse. The tool does not interpret that metadata. Even differing `.olean` bytes alone do not establish invalid proofs or failed reuse, and a clear report does not establish compatibility. This diagnostic neither repairs the Google aggregate reuse failure nor replaces native-platform, pinned-input, receiver `--no-build --no-cache`, or final Main kernel checks.
 
+### Export matching project dependencies
+
+A target bundle contains the selected targets. A receiver with different prerequisite artifacts can still require rebuilding them or the target. To preserve a completed build's full project import closure, export a supplemental bundle from the producer after its standard receipt passes verification:
+
+```bash
+python3 tracker/dependency_bundle.py export P0123 /work/receipts/P0123 \
+  /work/vol/lean /work/exports/P0123 --jobs 8
+python3 tracker/dependency_bundle.py verify P0123 /work/exports/P0123
+```
+
+The output directory must be new, and the receipt must include `targets.tar.gz` and any required `kernel-replay.json`. The exporter copies indexed sources and matching artifacts into a separate receiver, packages the project artifacts in parallel gzip shards, and runs all requested targets with rebuilding and downloads disabled. It checks source, configuration and artifact digests on both sides afterward. Generated `.setup.json` inputs and `.trace.nobuild` diagnostics are omitted. A failed reuse check preserves its log without producing a successful transfer receipt.
+
+Publish `dependency-manifest.json`, `transfer-result.json`, `receiver-no-build.log`, all `dependencies-*.tar.gz` shards, and the files in `receipt/`, preserving that subdirectory when downloaded. `verify` checks the standard receipt, exact indexed dependency closure, archive member digests and reuse record without extracting archives. It works without the local `receiver/` snapshot, which need not be published. The standard submission format is unchanged; link this supplemental export on the existing granted claim.
+
+This exports the full project closure, including cached prerequisites, so its module count is not a count of newly compiled modules. It needs disk space for the receiver snapshot and compressed archives. Package caches and the toolchain are shared with the producer during this check and are not bundled. A different host must prepare compatible pinned dependencies, verify the downloaded export, install the artifacts using the coordinator's transfer procedure, and run its own no-build check. Mixing closures from different producers can still invalidate Lake traces. This export records artifact reuse, not a fresh kernel replay or the final verification of Main.
+
 ## Troubleshoot a Lean version mismatch
 
 If `Cache/Requests.lean` reports a missing `Lake.PackageEntrySrc.path` case and the trace shows Lean 4.35.0, update your checkout. The replay uses Lean 4.33.1, and the verifier now calls that version explicitly through elan. Keep elan on PATH, then retry in a new directory on the build volume.
