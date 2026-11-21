@@ -1,0 +1,319 @@
+{
+  "scope": "Whole published solution export checked, with all five theorem statements and their context compared to a Mathlib-only challenge whose exact bytes were independently recovered from CI. No local source-to-export regeneration, native leanchecker --fresh Main result, or final repository acceptance is claimed.",
+  "release_url": "https://github.com/emsi/alpoge-rh-replay/releases/tag/whole-export-compare-20261121",
+  "result": {
+    "prepared_utc": "2026-11-21T16:06:19.340672+00:00",
+    "scope": "Whole published solution export checked, with all five theorem statements and their context compared to a Mathlib-only challenge whose exact bytes were independently recovered from CI. No local source-to-export regeneration, native leanchecker --fresh Main result, or final repository acceptance is claimed.",
+    "checker_repository": "https://github.com/leanprover/con-leche",
+    "checker_commit": "5dc36dc15b7bee891a02406b78a8ac816a47baad",
+    "checker_sha256": "588c0b86a3cb5e9fbee489ec1d609435599d82b155df1bb4f5e6886d43e3a12e",
+    "compiler": "Lean 4.36.0",
+    "original_proof_compiler": "Lean 4.33.1; provenance reported by the export publisher, not independently rebuilt here",
+    "export_publisher": "https://math.mit.edu/~drew/grh/",
+    "solution_sha256": "5ea74b912147c5c93cc2b6d70cc727cf908df2f62ac6a20480a3fa02f6be244e",
+    "challenge_sha256": "bd484ac9886a96f26b1d9a7a59ebd45b7a70d102c015d4f31f9302bbdd6ab2b9",
+    "actual_exit_code": 0,
+    "resource_guard_actual_exit_code": 0,
+    "elapsed_seconds": 478.376783867001,
+    "user_cpu_seconds": 21823.834343,
+    "system_cpu_seconds": 422.074899,
+    "peak_rss_kib": 47547476,
+    "solution_declarations": 1468418,
+    "challenge_declarations": 51692,
+    "matched_theorems": [
+      "riemannHypothesis",
+      "riemannZeta_eq_zero_re",
+      "LFunction_ne_zero_of_half_lt_re",
+      "LFunction_eq_zero_re",
+      "LFunction_eq_zero_re_of_isPrimitive"
+    ],
+    "positive_and_negative_controls": 7,
+    "input_and_checker_hashes_rechecked_after_run": true,
+    "evidence_files": [
+      {
+        "path": "full-export-verification/build-stage-resources/events.jsonl",
+        "bytes": 420641,
+        "sha256": "a376e548899a21f5270c5e97f26d3893a5ec8039bfc511b35b470b9f5fec07bc"
+      },
+      {
+        "path": "full-export-verification/build-stage-resources/policy.json",
+        "bytes": 2226,
+        "sha256": "94678822d5ed384ba8eecb656e4e7dd3d3aef5732d16b1a5561f717e5ccf4ff9"
+      },
+      {
+        "path": "full-export-verification/build-stage-resources/result.json",
+        "bytes": 220610,
+        "sha256": "95c7dfe9dce8993ca3853ef26fa35eb34fa45ac5ec6fd007a270100d93488a37"
+      },
+      {
+        "path": "full-export-verification/build-stage-resources/samples.jsonl",
+        "bytes": 981687,
+        "sha256": "526c415844ce3820b2f60253457feebafae4148e5bcf982e2dee9c1fb3597d4c"
+      },
+      {
+        "path": "full-export-verification/compare-resources/events.jsonl",
+        "bytes": 15239,
+        "sha256": "2fa631f3126fd3da26f0ccaa726f3be20562cdaddde2d8fa0b83fd8cf20e7eb9"
+      },
+      {
+        "path": "full-export-verification/compare-resources/policy.json",
+        "bytes": 2227,
+        "sha256": "20ac994a3afe109bdbddabf935b31744921c8eb98a8ea221dc6ac1690f0700f1"
+      },
+      {
+        "path": "full-export-verification/compare-resources/result.json",
+        "bytes": 10246,
+        "sha256": "930bba943ecd2cbf9d8e2400adfd4971bdb10f6ec0eb8bfe47e09958f0257481"
+      },
+      {
+        "path": "full-export-verification/compare-resources/samples.jsonl",
+        "bytes": 1068625,
+        "sha256": "77620aeff2897578e26ad6c0eb00c63b7f7b2ddf9dea61bd39534d1625d854f2"
+      },
+      {
+        "path": "replay_launch_gate.py",
+        "bytes": 3058,
+        "sha256": "53ba5e223504c47bfa07c7c9976374b6c7cf419b455485f3ddd378b13aaed5c2"
+      },
+      {
+        "path": "replay_resource_guard.py",
+        "bytes": 24041,
+        "sha256": "45375c8bc456de3c70dd566ea418c57a1b37d145b9148beac2b14d249c33550b"
+      },
+      {
+        "path": "sandbox.py",
+        "bytes": 3377,
+        "sha256": "d30e88511640b1d11692c3b7a82eacabdabdbb0e483f837c4162915dc43680bc"
+      }
+    ],
+    "publication_prepared_utc": "2026-11-21T16:56:05.873449+00:00",
+    "independent_challenge_provenance": "independent-challenge-provenance.json",
+    "average_cpu_cores": 46.50290313458196,
+    "checker_reported_solution_pool_busy_percent": 99.5,
+    "checker_reported_solution_pool_wall_seconds": 324.554,
+    "checker_reported_initial_parse_seconds": 143.7,
+    "total_guarded_comparison_seconds": 595.3288243329989
+  },
+  "independent_challenge": {
+    "verified_utc": "2026-11-21T16:56:05.873449+00:00",
+    "repository": "https://github.com/leanprover-community/riemann-hypothesis",
+    "workflow_run_url": "https://github.com/leanprover-community/riemann-hypothesis/actions/runs/44871806349",
+    "workflow_run_id": 44871806349,
+    "run_head_sha": "9c81cf32cb0f6f1a0d55431777a25d9851d9c410",
+    "event": "pull_request",
+    "conclusion": "success",
+    "artifact_id": 14694795408,
+    "artifact_zip_sha256": "56b78661e71bd6c0a42d4951e1c90d69647cd71f445490d51ba814f48ad356cd",
+    "artifact_digest_matches_github_metadata": true,
+    "challenge_bytes": 350862311,
+    "challenge_sha256": "bd484ac9886a96f26b1d9a7a59ebd45b7a70d102c015d4f31f9302bbdd6ab2b9",
+    "matches_previously_checked_challenge": true,
+    "inspection": "Saved workflow builds only Challenge against pinned Mathlib in a separate CI job, then exports the five statements. Saved source imports only Mathlib. CI metadata is provenance evidence, not a cryptographic attestation of build execution.",
+    "decompression": "Completed frame and exact output length confirmed in helper log; independently rehashed. Terminal exit status was not recovered, and is not claimed here.",
+    "archive_sha256": "cc021381455302145ebc48b61b0aed860285011b241d35b725266e7a0f20ff4d",
+    "files": [
+      {
+        "path": "artifact-metadata.json",
+        "bytes": 826,
+        "sha256": "743b2f59f68a4c847bf38c901ca372191d04604339101fcba0b0bdf442f801ad"
+      },
+      {
+        "path": "run-metadata.json",
+        "bytes": 16214,
+        "sha256": "96a3ff464801803ca32c2752073c9490a021236eba4afbee265973b53578e033"
+      },
+      {
+        "path": ".github/workflows/checks.yml",
+        "bytes": 4049,
+        "sha256": "6bcbf58e23b56378f1d9d01cd7adad4eafbe86a3cc468acff487e1ddf029ed31"
+      },
+      {
+        "path": "src/Challenge.lean",
+        "bytes": 1222,
+        "sha256": "a3cebbf30be6b9268a0ed413c9bbc256dfa9f4bfa04f1a75f144d135da5e21a5"
+      },
+      {
+        "path": "export-targets.txt",
+        "bytes": 433,
+        "sha256": "9eeb2e5e55be4a78f6e4983fc950dba915b45ad8aeb7a02a32341927a89e05e8"
+      },
+      {
+        "path": "lean-toolchain",
+        "bytes": 25,
+        "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
+      },
+      {
+        "path": "lake-manifest.json",
+        "bytes": 3221,
+        "sha256": "fee57ee9ed399d0a638ca955e5ad40a37a36eeb9b6dfd9f5964114fa7bbe4774"
+      },
+      {
+        "path": "challenge-export.zip",
+        "bytes": 37612902,
+        "sha256": "56b78661e71bd6c0a42d4951e1c90d69647cd71f445490d51ba814f48ad356cd"
+      },
+      {
+        "path": "challenge.export.sha256",
+        "bytes": 83,
+        "sha256": "1fb5b3f10c55eda86e29c7f4a93f0a965b011e5adcf4b0de7029de707254c3ea"
+      },
+      {
+        "path": "decompression.log",
+        "bytes": 85,
+        "sha256": "6c50ea842e353c0cd7858faeb37254272a50cf3e147a7bcfc2cb375e18a93983"
+      }
+    ]
+  },
+  "files": [
+    {
+      "name": "SHA256SUMS",
+      "bytes": 2180,
+      "sha256": "3103105397ca68fb7fb14fa30bd20ff9c55cfd37fde851c323e2bb78217f4654",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/SHA256SUMS"
+    },
+    {
+      "name": "build-stage-result.json",
+      "bytes": 97,
+      "sha256": "832900eafed07de0257895eb0294634b61645026aa04eb7893d6b48efe426202",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/build-stage-result.json"
+    },
+    {
+      "name": "build_and_stage.py",
+      "bytes": 1764,
+      "sha256": "8b7ea2072ee8ba3f7da0d0a7da618459351834632c7fe854ade9d5c6718ba82f",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/build_and_stage.py"
+    },
+    {
+      "name": "build_checker.py",
+      "bytes": 2774,
+      "sha256": "caa982ff391847b306c9005e1564e76aae228b0e05dd89417eb697b9f28e2c39",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/build_checker.py"
+    },
+    {
+      "name": "check_export.py",
+      "bytes": 4532,
+      "sha256": "5c804356035f8d08643719754b0491802bc4408a865ee02e7e12d608a6e2b697",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/check_export.py"
+    },
+    {
+      "name": "checker-build-overlay.json",
+      "bytes": 541,
+      "sha256": "f9d58821a685620908c30f46664fc871aea0af39b241c999b2b954d5f93e8b5b",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/checker-build-overlay.json"
+    },
+    {
+      "name": "checker-build-state.json",
+      "bytes": 3948,
+      "sha256": "6a7e297ea261ac3251647d6b52afd997d435e7999980087fa0697365c4399dbd",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/checker-build-state.json"
+    },
+    {
+      "name": "checker-build.log",
+      "bytes": 22395,
+      "sha256": "d090c490386e113551d905d59f7863c0fd72df6886f9bc896893ffb1327417c8",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/checker-build.log"
+    },
+    {
+      "name": "checker-controls.json",
+      "bytes": 4751,
+      "sha256": "a79b96581313cc66bbe335632d7c49ed9c95ae7de87ddec5cf494410e1c94bd0",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/checker-controls.json"
+    },
+    {
+      "name": "control-bad-proof.log",
+      "bytes": 503,
+      "sha256": "a0adce66bd70cab231bc033e3dd7127253a7194feaf40a38d2bec7ec8545b5b7",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/control-bad-proof.log"
+    },
+    {
+      "name": "control-changed-context.log",
+      "bytes": 1039,
+      "sha256": "d3fb2692d53618a59b296168794f8cd54c10bf5d860ddcf88c0fb04350c3e06f",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/control-changed-context.log"
+    },
+    {
+      "name": "control-compare-positive.log",
+      "bytes": 1330,
+      "sha256": "b7f1b4010a28c821a36bf90962e593ef03467b095fe3f7bda57aab5a6c631f4b",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/control-compare-positive.log"
+    },
+    {
+      "name": "control-extra-axiom.log",
+      "bytes": 573,
+      "sha256": "4709e4f66c16fa6e5757d1aefc07becc307b3ecd8d1f8e0c2375b0b36b9fc6f5",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/control-extra-axiom.log"
+    },
+    {
+      "name": "control-false-statement.log",
+      "bytes": 945,
+      "sha256": "b3e9934fd07d5a76f1d2e274bb9d433926d69b874639392a609c1eb4075380c9",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/control-false-statement.log"
+    },
+    {
+      "name": "control-positive.log",
+      "bytes": 448,
+      "sha256": "5dd33bd57acb5a8d5aa8752b51e06de2ddefbb1c53320c4096fd4cc6f4fe4100",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/control-positive.log"
+    },
+    {
+      "name": "control-wrong-statement.log",
+      "bytes": 1003,
+      "sha256": "40f988bc0db5e1030c13e3a3d889973dc9367933f6810a6b22d1859479feb4c3",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/control-wrong-statement.log"
+    },
+    {
+      "name": "exports-verified.json",
+      "bytes": 1676,
+      "sha256": "185d83d8645f8867cef53752952ac4c472c24e4b5b71fc604156b5df24bc5593",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/exports-verified.json"
+    },
+    {
+      "name": "independent-challenge-provenance.json",
+      "bytes": 2819,
+      "sha256": "58c4fc361f79bb9ced91ece0329d26f07141c4712012fcc9f1b7d4ca5692c87e",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/independent-challenge-provenance.json"
+    },
+    {
+      "name": "independent-challenge-provenance.tar.gz",
+      "bytes": 37631841,
+      "sha256": "cc021381455302145ebc48b61b0aed860285011b241d35b725266e7a0f20ff4d",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/independent-challenge-provenance.tar.gz"
+    },
+    {
+      "name": "local-compare-result.json",
+      "bytes": 5562,
+      "sha256": "fad3d7ea4679b2e4e690b3a86810dcecb6a4a8a4d4a9c670994a413844d43464",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/local-compare-result.json"
+    },
+    {
+      "name": "local-compare.log",
+      "bytes": 5417,
+      "sha256": "9a5b36b9bdba65976a58a666c46fa0a5d4741a894ee70ac6b1ab20ab3728d45f",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/local-compare.log"
+    },
+    {
+      "name": "resource-and-build-evidence.tar.gz",
+      "bytes": 318051,
+      "sha256": "e8307029806021f31a19be0e81e155d95c6856e69aa47ac5ca59eafd45afb874",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/resource-and-build-evidence.tar.gz"
+    },
+    {
+      "name": "verification-receipt.json",
+      "bytes": 3987,
+      "sha256": "16cff1c1a04bead771c78ef8ad8fe61f85c7ed4b61f69dffc258f993eb4fa797",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/verification-receipt.json"
+    },
+    {
+      "name": "whole-process-analysis.json",
+      "bytes": 3231,
+      "sha256": "7778f4eb1b9187aa9039660807ce26e9a4d96a651dff5e8020c7aec7b9180512",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/whole-process-analysis.json"
+    },
+    {
+      "name": "zstd_stream.py",
+      "bytes": 2652,
+      "sha256": "09103ecf8bcb900dca224b51fdd75115e258bcd2a74155afe948c37aebb03539",
+      "url": "https://github.com/emsi/alpoge-rh-replay/releases/download/whole-export-compare-20261121/zstd_stream.py"
+    }
+  ]
+}
