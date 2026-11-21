@@ -1,0 +1,37 @@
+name: Dependency artifact integrity
+on:
+  pull_request:
+    paths: ['audit/dependency-artifacts.py', 'tests/dependency-artifacts-native.py', 'tests/test_dependency_artifacts.py', 'tests/test-verify-sh.sh', 'verify.sh', '.github/workflows/dependency-artifacts.yml']
+  push:
+    paths: ['audit/dependency-artifacts.py', 'tests/dependency-artifacts-native.py', 'tests/test_dependency_artifacts.py', 'tests/test-verify-sh.sh', 'verify.sh', '.github/workflows/dependency-artifacts.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dependency-artifacts:
+    if: github.event_name != 'push' || github.event.repository.fork || github.ref == 'refs/heads/main'
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-24.04, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install the pinned native compiler
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y elan
+          elan toolchain install leanprover/lean4:v4.33.1
+      - name: Check artifact and verifier integrity guards
+        run: |
+          python3 -m unittest discover -s tests -p 'test_*.py' -v
+          bash tests/test-verify-sh.sh
+      - name: Reject a changed native cache despite a successful fresh kernel replay
+        env:
+          LEAN_NUM_THREADS: '2'
+        run: |
+          prefix="$(elan run leanprover/lean4:v4.33.1 lean --print-prefix)"
+          python3 tests/dependency-artifacts-native.py "$prefix/bin" --fresh
