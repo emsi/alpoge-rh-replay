@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.SimultaneousEigenbasisIntegralStatement",
+  "source_sha256": "f0a730ae334977006d5cc4e7410cab1a50a1954008be0a103f57761259553cbc",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0114-lean436-20261121/packet-result.json"
+}

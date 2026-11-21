@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.SingleMemOfMem",
+  "source_sha256": "0beef9168f8a9e6790b0d259b3ee16ad69dd13c1f46dd1e87dafd20eda6e75ab",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0114-lean436-20261121/packet-result.json"
+}

@@ -1,0 +1,20 @@
+--- a/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/SmoothAlongCurveProductsStable.lean
++++ b/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/SmoothAlongCurveProductsStable.lean
+@@ -93,7 +93,7 @@
+     intro a ha
+     rw [List.mem_ofFn] at ha
+     obtain ⟨i, rfl⟩ := ha
+-    exact ⟨hps i, contDiff_apply ℝ ℝ i⟩)
++    exact ⟨hps i, contDiff_apply ℝ (fun _ : Fin k => ℝ) i⟩)
+   simpa [List.map_ofFn, Function.comp_def] using h1
+ 
+ open MeasureTheory in
+@@ -224,7 +224,7 @@
+         intro a ha
+         rw [List.mem_ofFn] at ha
+         obtain ⟨i, rfl⟩ := ha
+-        exact ⟨hps i, contDiff_apply ℝ ℝ i⟩)
++        exact ⟨hps i, contDiff_apply ℝ (fun _ : Fin k => ℝ) i⟩)
+     have h2 := jointlySmooth_foldr_deriv_action h1 l hl (Fin k → ℝ) id contDiff_id [] (by simp)
+     simpa [List.map_ofFn, Function.comp_def] using h2
+ 

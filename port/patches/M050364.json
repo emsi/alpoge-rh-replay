@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.SmoothAlongCurveProductsStable",
+  "source_sha256": "852f7f96c3d6a9094b423175ef294e4f5ee08156937898c59c3ba0c2652a3c77",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Proof-only: specify the constant real-valued family in the generalized dependent contDiff_apply theorem. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0114-lean436-20261121/packet-result.json"
+}
