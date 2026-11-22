@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Proofs.HeightProofs.ShortLatticeVectorBoundedSizeOfOrthogonalFrame",
+  "source_sha256": "bc2d4aa5b9b6fc2060b04fb6639320e3b1c46a27086c9fb5cb2940d19ffcaa22",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Use the product inequality that takes the original nonnegativity premise. Use unique divisibility from the rational module; it supplies the needed torsion-free instances on the same additive group. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0252-lean436-20261121/packet-result.json"
+}

@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Proofs.FoundationProofs.WirtingerEichlerStatement",
+  "source_sha256": "a6f713016f6056949c4de5c70c17775c2c5ec545abc30e868384292410878c12",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0252-lean436-20261121/packet-result.json"
+}
