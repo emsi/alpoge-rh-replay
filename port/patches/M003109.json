@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Definitions.AutomorphicMembership.ExistsNotCongPow",
+  "source_sha256": "245016ec8d132b1c94b37499d357cd4fb93a8e508176d10a676a09bcf711d281",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0238-lean436-20261121/packet-result.json"
+}

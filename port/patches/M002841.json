@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Counterexamples.JetSurvey.ExistsIsCayleyUIff",
+  "source_sha256": "e2dc0dfe0fbbdc79c1d64377fddece3e54859dd1a7f020246bc92117c34c0268",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0238-lean436-20261121/packet-result.json"
+}

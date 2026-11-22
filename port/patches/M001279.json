@@ -1,0 +1,8 @@
+{
+  "module": "CompanionTheory.SpectralGeometry.LocalGlobalProofs.AdelicAnalysis.TensorLocallyCompactRing",
+  "source_sha256": "cf7cb69589f4e68ad6e86362eee0e5b40794b59a509af2d1ef2813bf15b2c398",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Use the current finite-sum API: continuous_finset_sum \u2192 continuous_finsetSum. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0238-lean436-20261121/packet-result.json"
+}
