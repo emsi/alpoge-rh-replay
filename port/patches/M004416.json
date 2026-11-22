@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Definitions.GlobalTwisting.ZerosDisc",
+  "source_sha256": "77f9fb43606b6186d4196e7e1123c1e1d515617ec3bb99040505208e5eec01a8",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0239-lean436-20261121/packet-result.json"
+}
