@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Proofs.UnramifiedDepth.FactorialWeightedPairingDetPowProportionalStatement",
+  "source_sha256": "06d131389b4abcc268e6c5e3c93fe8d0d0682ede918e5cce8ac1b85b673b47ed",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Use the same polynomial coefficient projection in its current argument order. Exported statements retain exactly the same multivariate coefficients, sums and bounds: the former exponent-first coeff operation is now the same AddMonoidAlgebra coefficient projection with the polynomial first.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0258-lean436-20261121/packet-result.json"
+}

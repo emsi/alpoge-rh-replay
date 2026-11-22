@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Proofs.UnramifiedDepth.DeterminantPairingQuotientValuationLowerBound",
+  "source_sha256": "ccc7eaac33a48c694c7cee4a3a52518dd5860027972991e1308d991543ad6fe1",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Use the same polynomial coefficient projection in its current argument order. Use the same polynomial coefficient projection in its current argument order. Exported statements retain exactly the same multivariate coefficients, sums and bounds: the former exponent-first coeff operation is now the same AddMonoidAlgebra coefficient projection with the polynomial first. Convert the proof-local valuation formula to natural multiplicity using Nat.padicValNat_def.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0258-lean436-20261121/packet-result.json"
+}
