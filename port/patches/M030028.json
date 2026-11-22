@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.ExistsTwistedGroupLike",
+  "source_sha256": "3b235c6794b91aece294fd4de9b54f71094cd9157822d65030fa6412b51e16f9",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Remove obsolete tensor-induction zero cases and provide the standard vector-space torsion-free instance before the algebraic-closure lift. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0180-lean436-20261121/packet-result.json"
+}

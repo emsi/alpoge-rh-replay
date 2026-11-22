@@ -1,0 +1,10 @@
+--- a/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExtDAlgebraMapPowCharMul.lean
++++ b/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExtDAlgebraMapPowCharMul.lean
+@@ -31,7 +31,6 @@
+     d (algebraMap K _ (c ^ p) * x) = algebraMap K _ (c ^ p) * d x := by
+   rw [hd.mul, hd.alg, kaehlerZ_D_pow_char p, map_zero, zero_mul, zero_add]
+   congr 1
+-  exact AlgHom.commutes _ _
+ 
+ end
+ 

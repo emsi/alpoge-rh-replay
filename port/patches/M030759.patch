@@ -1,0 +1,12 @@
+--- a/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExteriorPowerSpanOfLattice.lean
++++ b/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExteriorPowerSpanOfLattice.lean
+@@ -16,7 +16,8 @@
+     show (exteriorPower.ιMulti C N).toMultilinearMap (fun i => ∑ j, (algebraMap O C (c i j)) • g j) ∈ _
+     rw [MultilinearMap.map_sum]
+     refine Submodule.sum_mem _ (fun s _ => ?_)
+-    rw [MultilinearMap.map_smul_univ, ← map_prod, algebraMap_smul]
++    simp only [MultilinearMap.map_smul_univ, RingHom.id_apply]
++    rw [← map_prod, algebraMap_smul]
+     exact Submodule.smul_mem _ _ (Submodule.subset_span ⟨s, rfl⟩)
+   · apply Submodule.span_mono
+     rintro w ⟨s, rfl⟩

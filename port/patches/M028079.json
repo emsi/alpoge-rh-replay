@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.ExistsOscillatorActionOfGaussianPairings",
+  "source_sha256": "9cbaeeb7105778dccc5c6dac4c18c4f09109c0ed231f92d6d06f3c93dc96106c",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Specify the continuous evaluation function explicitly before applying IsHeis.continuous, avoiding expensive higher-order inference. Retain a finite 200000-heartbeat budget after diagnostic localization; profiler traces removed. Make both functions of the continuity composition explicit to avoid higher-order inference through the integral. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0180-lean436-20261121/packet-result.json"
+}

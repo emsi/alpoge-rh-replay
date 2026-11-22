@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.ExistsMultilinearFormOfPicTorsionStatement",
+  "source_sha256": "d948314e96fa675e7cf3d71778f900bdb12ec0da79f6b5a9bd799d9e819cecd3",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Target multilinear maps take a scalar ring homomorphism; the identity on B preserves exactly the original B-multilinearity in the exported statement.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0180-lean436-20261121/packet-result.json"
+}

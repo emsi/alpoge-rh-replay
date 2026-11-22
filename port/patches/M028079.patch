@@ -1,0 +1,26 @@
+--- a/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsOscillatorActionOfGaussianPairings.lean
++++ b/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsOscillatorActionOfGaussianPairings.lean
+@@ -2,6 +2,8 @@
+ import Development.AbelianVarietyTheory.Proofs.DivisorProofs.ContinuousFourierGau
+ import Development.AbelianVarietyTheory.Proofs.DivisorProofs.IntegralGauTwistedConv
+ import Development.AbelianVarietyTheory.Proofs.DivisorProofs.PowMulNormGauLe
++
++set_option maxHeartbeats 200000
+ 
+ noncomputable section
+ 
+@@ -274,7 +276,13 @@
+     simp only [norm_smul, h.2.2.1]
+     rw [integral_mul_const]
+   · refine Filter.Eventually.of_forall fun w => ?_
+-    exact h.continuous (by fun_prop) (hc.comp (continuous_id.prodMk continuous_const))
++    have hp : Continuous (fun a : V →L[ℝ] V => (a, proj h (ρ (-w) f))) :=
++      continuous_id.prodMk continuous_const
++    exact h.continuous (a := fun a : V →L[ℝ] V => a w)
++      (x := fun a : V →L[ℝ] V => ∫ u : V, gau u • ρ (a u) (proj h (ρ (-w) f)))
++      (by fun_prop) (Continuous.comp
++        (g := fun p : (V →L[ℝ] V) × B => ∫ u : V, gau u • ρ (p.1 u) p.2)
++        (f := fun a : V →L[ℝ] V => (a, proj h (ρ (-w) f))) hc hp)
+ 
+ theorem proj_twist_of_isometry (h : IsHeis (omJ J) ρ) (a b : V →L[ℝ] V) (hab : ∀ v, a (b v) = v)
+     (ha : ∀ x y, omJ J (a x) (a y) = omJ J x y) (hn : ∀ x, ‖a x‖ = ‖x‖) (x : B) :
