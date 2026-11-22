@@ -1,0 +1,8 @@
+{
+  "module": "GroundTheory.HeightsAndTheta.Heights.ComplexAnalyticSets.StFunctionFieldDegree",
+  "source_sha256": "3fcb09af8c44887eacb8e66b970ab7159aac64dd9c21c9990bb83d02fd584d8c",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Give the projection algebra and its inherited scalar action explicitly inside the statement, avoiding recursive instance search. Both are exactly the original projAlgebra action; no new hypothesis is introduced.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0227-lean436-20261121/packet-result.json"
+}

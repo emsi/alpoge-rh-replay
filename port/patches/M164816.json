@@ -1,0 +1,8 @@
+{
+  "module": "GroundTheory.HeightsAndTheta.Heights.ComplexAnalyticSets.StSerreRFlatAscent",
+  "source_sha256": "a0852c3d735b79fd0ce6bb2f9c406ab9c78b191947ee08f0b31de55d824ef89b",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0227-lean436-20261121/packet-result.json"
+}

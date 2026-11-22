@@ -1,0 +1,12 @@
+--- a/src/GroundTheory/HeightsAndTheta/Heights/ComplexAnalyticSets/StFunctionFieldDegree.lean
++++ b/src/GroundTheory/HeightsAndTheta/Heights/ComplexAnalyticSets/StFunctionFieldDegree.lean
+@@ -13,7 +13,8 @@
+ def FunctionFieldDegree.Statement : Prop :=
+   ∀ (n d : ℕ) (J : Ideal (MvPolynomial (Fin n) ℂ)) (A : Matrix (Fin d) (Fin n) ℂ), J.IsPrime →
+     IsFiniteProjection J A →
+-    letI := projAlgebra J A
++    letI : Algebra (MvPolynomial (Fin d) ℂ) (MvPolynomial (Fin n) ℂ ⧸ J) := projAlgebra J A
++    letI : SMul (MvPolynomial (Fin d) ℂ) (MvPolynomial (Fin n) ℂ ⧸ J) := (projAlgebra J A).toSMul
+     ∀ (K L : Type) [Field K] [Field L] [Algebra (MvPolynomial (Fin d) ℂ) K]
+       [IsFractionRing (MvPolynomial (Fin d) ℂ) K] [Algebra (MvPolynomial (Fin n) ℂ ⧸ J) L]
+       [IsFractionRing (MvPolynomial (Fin n) ℂ ⧸ J) L] [Algebra (MvPolynomial (Fin d) ℂ) L]
