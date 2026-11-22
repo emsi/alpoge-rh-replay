@@ -1,0 +1,8 @@
+{
+  "module": "Development.AutomorphicSpectrum.Proofs.BlockDecomposition.NormCentralizerIdentification",
+  "source_sha256": "eb7577016ab8c94d9052c8630ab5ce86ab6831ba3681ae0947f9bfe8ad765d6f",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0206-lean436-20261121/packet-result.json"
+}

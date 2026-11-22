@@ -1,0 +1,8 @@
+{
+  "module": "Development.AutomorphicSpectrum.Proofs.BlockDecomposition.NatCardDualEq",
+  "source_sha256": "ae6d5e9c9d5672e1431d15ced4ae0781173dd6d96b3d2e0d7b7004996e43d70d",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0206-lean436-20261121/packet-result.json"
+}

@@ -1,0 +1,8 @@
+{
+  "module": "Development.AutomorphicSpectrum.Proofs.BlockDecomposition.NormMapSecondProperty",
+  "source_sha256": "46cc603227abf157d3a76841841010ff627aac2261cb2f60ec12a16578d83697",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Remove the deleted coercion lemma from simp; the remaining AlgEquiv coefficient coercion is definitional. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0206-lean436-20261121/packet-result.json"
+}

@@ -1,0 +1,8 @@
+{
+  "module": "Development.AutomorphicSpectrum.Proofs.BlockDecomposition.NormMapFirstProperty",
+  "source_sha256": "eb4c9b23735096303467f9684c3836531afd8c2ea35c63dcee6411ab90b8898f",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Remove only the obsolete tensor-induction zero alternatives reported by the compiler; preserve other recursors. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0206-lean436-20261121/packet-result.json"
+}

@@ -1,0 +1,11 @@
+--- a/src/Development/AutomorphicSpectrum/Proofs/BlockDecomposition/LocalFiniteAlgebraJacobsonRadical.lean
++++ b/src/Development/AutomorphicSpectrum/Proofs/BlockDecomposition/LocalFiniteAlgebraJacobsonRadical.lean
+@@ -17,7 +17,7 @@
+     rintro M ⟨-, hM⟩
+     refine Ideal.map_le_iff_le_comap.mpr ?_
+     haveI : (Ideal.comap (algebraMap O R) M).IsMaximal :=
+-      Ideal.isMaximal_comap_of_isIntegral_of_isMaximal M
++      Ideal.isMaximal_under_of_isIntegral_of_isMaximal (R := O) (S := R) M
+     exact (IsLocalRing.eq_maximalIdeal this).ge
+   · have hle : m ≤ Ideal.comap (algebraMap O R) I := Ideal.le_comap_map
+     let f : (O ⧸ m) →+* (R ⧸ I) := Ideal.quotientMap I (algebraMap O R) hle
