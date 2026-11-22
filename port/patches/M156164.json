@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.MonomialFrameSpan.StepBack",
+  "source_sha256": "0273347e29c6507c6d49ee09a1c8001e4164a4837bb6f7ba3dc8c676f74cc104",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Use the same polynomial coefficient projection in its current argument order. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0277-lean436-20261121/packet-result.json"
+}

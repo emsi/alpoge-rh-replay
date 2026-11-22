@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.MonomialFrameSpan.BasisMonomialsApply",
+  "source_sha256": "e19a80b158102a6bfc01ac935c97130e69316d1ef1b231ae1f8d0c19b2c76270",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Use the renamed evaluation theorem for injective maps of finitely supported domains. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0277-lean436-20261121/packet-result.json"
+}
