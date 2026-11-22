@@ -1,0 +1,11 @@
+--- a/src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/ExistsCompleteDvrPrimitiveRoot.lean
++++ b/src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/ExistsCompleteDvrPrimitiveRoot.lean
+@@ -13,7 +13,7 @@
+     (S := 𝓞 K) (Ideal.span {(l : ℤ)}) (by
+       rw [(RingHom.injective_iff_ker_eq_bot _).1 (RingHom.injective_int (algebraMap ℤ (𝓞 K)))]; exact bot_le)
+   have hmem : (l : 𝓞 K) ∈ Q := by
+-    have : (l : ℤ) ∈ Q.comap (algebraMap ℤ (𝓞 K)) := by
++    have : (l : ℤ) ∈ Q.under ℤ := by
+       rw [hQ']; exact Ideal.mem_span_singleton_self _
+     simpa [Ideal.mem_comap] using this
+   refine ⟨⟨Q, hQ, ?_⟩, hmem⟩

@@ -1,0 +1,19 @@
+--- a/src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/ExistsLocallyConstantCutoffClosedEmbedding.lean
++++ b/src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/ExistsLocallyConstantCutoffClosedEmbedding.lean
+@@ -1,5 +1,7 @@
+ import Development.AbelianVarietyTheory.Definitions.NonGaloisDescent.IsTestRep
+ open GlobalTheory.JR Matrix MeasureTheory Filter Topology
++
++open scoped Pointwise
+ 
+ namespace GlobalTheory.CutOff
+ 
+@@ -64,7 +66,7 @@
+     rw [IsLocallyConstant.iff_eventually_eq]
+     intro g
+     have hc : Tendsto (fun y => y * g⁻¹) (𝓝 g) (𝓝 1) := by
+-      simpa using (continuous_mul_right g⁻¹).tendsto g
++      simpa using (continuous_id.mul_const g⁻¹).tendsto g
+     filter_upwards [hc hW] with y hy
+     have := hFW _ hy g
+     rwa [inv_mul_cancel_right] at this
