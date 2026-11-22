@@ -1,0 +1,8 @@
+{
+  "module": "Formalism.PeriodIntegrals.OrbitalBoundsConclusion.SplitIntLoc",
+  "source_sha256": "651916c47047a088ef0814dcf9b8d58e038f49c180ec89616c62ededd7e19bbc",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0276-lean436-20261121/packet-result.json"
+}
