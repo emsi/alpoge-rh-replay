@@ -1,0 +1,8 @@
+{
+  "module": "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.InertiaRamification.RootNorm",
+  "source_sha256": "a30dea5e4c5fa0a94ef72509f6a8315da8d584ff0b12aee312c97678218f77eb",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Bridge the unchanged padic valuation statement to the current natural multiplicity lemmas via padicValNat_def. Qualify the valuation-to-multiplicity identity in its Nat namespace. Normalize the valuation only in the numerical branch where it occurs. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0263-lean436-20261121/packet-result.json"
+}

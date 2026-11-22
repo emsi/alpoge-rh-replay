@@ -1,0 +1,8 @@
+{
+  "module": "Development.AutomorphicArithmetic.IntegralCasts.CapelliIdentities.CayleyHamiltonSymmetric",
+  "source_sha256": "f85a0ba43cb01f85647f118469cddc21021c4803470853b2d778a915fc9656c2",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "Use the current finite-sum API: Finsupp.finset_sum_apply \u2192 Finsupp.finsetSum_apply. Use the same polynomial coefficient projection in its current argument order. Use the same polynomial coefficient projection in its current argument order. Use the same polynomial coefficient projection in its current argument order. Construct the commutative adjoin using its pairwise commutation instance, specify polynomial coefficient domains, evaluate the zero coefficient function and qualify matrix identity entries. Enable the scoped commutative-ring instance only for the private adjoin helper; use explicit congruence through coefficient extraction and specify the ring homomorphism when rewriting its unit. Qualify the determinant representation algebra map explicitly. No exported declaration statements, definitions or instances changed.",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0263-lean436-20261121/packet-result.json"
+}

@@ -1,0 +1,22 @@
+--- a/src/Development/AutomorphicArithmetic/CommutativeAlgebra/ExistsZeroOfLinearFormJacobianHenselian.lean
++++ b/src/Development/AutomorphicArithmetic/CommutativeAlgebra/ExistsZeroOfLinearFormJacobianHenselian.lean
+@@ -7,7 +7,7 @@
+ 
+ private lemma UpperTheory.eval_zero_pderiv {R : Type} [CommRing R] {n : ℕ} (j : Fin n)
+     (P : MvPolynomial (Fin n) R) :
+-    MvPolynomial.eval 0 (MvPolynomial.pderiv j P) = MvPolynomial.coeff (Finsupp.single j 1) P := by
++    MvPolynomial.eval 0 (MvPolynomial.pderiv j P) = (P).coeff (Finsupp.single j 1) := by
+   rw [MvPolynomial.eval_zero, MvPolynomial.constantCoeff_eq]
+   induction P using MvPolynomial.induction_on' with
+   | monomial s a =>
+@@ -40,8 +40,8 @@
+       ∃ x : Fin n → A, (∀ j, x j ∈ maximalIdeal A) ∧ L (MvPolynomial.eval (fun j => algebraMap A E (x j)) Φ) = 0 := by
+   intro A E _ _ _ _ n Φ L h0 h1
+   let G : Fin n → MvPolynomial (Fin n) E → MvPolynomial (Fin n) A := fun i P =>
+-    ∑ d ∈ P.support, MvPolynomial.monomial d (L (MvPolynomial.coeff d P) i)
+-  have hG : ∀ i d P, MvPolynomial.coeff d (G i P) = L (MvPolynomial.coeff d P) i := by
++    ∑ d ∈ P.support, MvPolynomial.monomial d (L ((P).coeff d) i)
++  have hG : ∀ i d P, ((G i P)).coeff d = L ((P).coeff d) i := by
+     intro i d P
+     simp only [G, MvPolynomial.coeff_sum, MvPolynomial.coeff_monomial, Finset.sum_ite_eq']
+     split_ifs with h
