@@ -1,0 +1,8 @@
+{
+  "module": "Development.AbelianVarietyTheory.Proofs.FoundationProofs.BesselJUnitaryEquivariant",
+  "source_sha256": "bcf07134da3873395a9330b373d2007019d795d19528b7dce4fad31e4fca9c2f",
+  "lean": "leanprover/lean4:v4.36.0",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "notes": "unchanged",
+  "evidence": "https://github.com/emsi/alpoge-rh-replay/releases/download/port-P0249-lean436-20261121/packet-result.json"
+}
